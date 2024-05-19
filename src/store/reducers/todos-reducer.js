@@ -1,6 +1,6 @@
-import { createStore } from "redux";
+const initialState = [];
 
-const todos = (state = [], action) => {
+export const todos = (state = initialState, action) => {
   switch (action.type) {
     case "ADD_TODO":
       return [
@@ -22,19 +22,4 @@ const todos = (state = [], action) => {
   }
 };
 
-export const store = createStore(todos);
-
-export const addTodo = (title) => ({
-  type: "ADD_TODO",
-  title,
-});
-
-export const removeTodo = (id) => ({
-  type: "REMOVE_TODO",
-  id,
-});
-
-export const toggleTodo = (id) => ({
-  type: "TOGGLE_TODO",
-  id,
-});
+  
