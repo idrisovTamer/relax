@@ -5,18 +5,18 @@ import { removeTodo, toggleTodo, editTodo } from '../store/actions/todos-actions
 const TodoList = () => {
   const todos = useSelector(state => state.todos);
   const dispatch = useDispatch();
-  const [isEditing, setIsEditing] = useState(null);
+  const [editId, setEditId] = useState(null);
   const [editTitle, setIsEditTitle] = useState('')
 
 
 const onEditTask = (todo) => {
  setIsEditTitle(todo.title)
-setIsEditing(todo.id)
+setEditId(todo.id)
 }
 
 const onSaveTask = (todo) => {
 dispatch(editTodo(todo.id, editTitle))
-setIsEditing(null)
+setEditId(null)
 setIsEditTitle('')
 }
 
@@ -30,7 +30,7 @@ setIsEditTitle('')
             checked={todo.completed}
             onChange={() => dispatch(toggleTodo(todo.id))}
           /> { 
-              isEditing === todo.id ? (
+              editId === todo.id ? (
                 <>
                   <input type="text"
                   value={editTitle}
