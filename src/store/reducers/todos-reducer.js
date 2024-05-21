@@ -17,6 +17,8 @@ export const todos = (state = initialState, action) => {
       return state.map((todo) =>
         todo.id === action.id ? { ...todo, completed: !todo.completed } : todo
       );
+      case 'EDIT_TODO':
+          return state.map((todo) => todo.id === action.id ? {...todo, title: action.title} : todo)
     default:
       return state;
   }
